@@ -13,10 +13,10 @@ public class App {
     static final Logger logger = LoggerFactory.getLogger(App.class.getCanonicalName());
 
     public static void main(String[] args) throws IOException {
-        Properties properties = new ApplicationProperties().get();
+        ApplicationProperties properties = new ApplicationProperties();
 
-        String coreSite = properties.getProperty("coreSite");
-        String hdfsSite = properties.getProperty("hdfsSite");
+        String coreSite = properties.get("coreSite");
+        String hdfsSite = properties.get("hdfsSite");
 
         logger.debug(coreSite);
 
@@ -26,6 +26,6 @@ public class App {
 
         FileSystem fileSystem = FileSystem.get(conf);
 
-        logger.debug("file "+ args[0] + " exists: " + fileSystem.exists(new Path(args[0])));
+        logger.debug("file " + args[0] + " exists: " + fileSystem.exists(new Path(args[0])));
     }
 }
